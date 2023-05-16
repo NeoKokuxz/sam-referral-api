@@ -18,6 +18,13 @@ exports.handler = async(event) => {
     case "users/referral/{userId}": 
       if(httpMethod === "GET") {
         const { userId } = pathParameters
+        const res = await getReferralCode(userId)
+        const response = {
+          statusCode: 200,
+          body: res
+        }
+
+        return response
 
       }
     // Generate new Referral code for user
